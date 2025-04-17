@@ -1,0 +1,685 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84DB4CE42DB0919F000A457D /* CliqueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4CE32DB0919F000A457D /* CliqueApp.swift */; };
+		84DB4CE62DB0919F000A457D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4CE52DB0919F000A457D /* ContentView.swift */; };
+		84DB4CE82DB091A4000A457D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84DB4CE72DB091A4000A457D /* Assets.xcassets */; };
+		84DB4CEC2DB091A4000A457D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84DB4CEB2DB091A4000A457D /* Preview Assets.xcassets */; };
+		84DB4CF62DB091A6000A457D /* CliqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4CF52DB091A6000A457D /* CliqueTests.swift */; };
+		84DB4D002DB091A6000A457D /* CliqueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4CFF2DB091A6000A457D /* CliqueUITests.swift */; };
+		84DB4D022DB091A6000A457D /* CliqueUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D012DB091A6000A457D /* CliqueUITestsLaunchTests.swift */; };
+		84DB4D122DB091E5000A457D /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D112DB091E5000A457D /* UserViewModel.swift */; };
+		84DB4D142DB09217000A457D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D132DB09217000A457D /* FeedViewModel.swift */; };
+		84DB4D162DB09227000A457D /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D152DB09227000A457D /* PostViewModel.swift */; };
+		84DB4D182DB0923C000A457D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D172DB0923C000A457D /* User.swift */; };
+		84DB4D1A2DB0924C000A457D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D192DB0924C000A457D /* Post.swift */; };
+		84DB4D1C2DB0926F000A457D /* UserPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D1B2DB0926F000A457D /* UserPhoto.swift */; };
+		84DB4D1E2DB09363000A457D /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D1D2DB09363000A457D /* PostView.swift */; };
+		84DB4D202DB09373000A457D /* AuthenticationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D1F2DB09373000A457D /* AuthenticationPage.swift */; };
+		84DB4D222DB09389000A457D /* GroupsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D212DB09389000A457D /* GroupsPage.swift */; };
+		84DB4D242DB09398000A457D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D232DB09398000A457D /* HomePage.swift */; };
+		84DB4D262DB093AA000A457D /* UploadDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D252DB093AA000A457D /* UploadDump.swift */; };
+		84DB4D282DB093BF000A457D /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D272DB093BF000A457D /* GroupView.swift */; };
+		84DB4D2A2DB093D1000A457D /* ProfileAndCalendarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D292DB093D1000A457D /* ProfileAndCalendarPage.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84DB4CF22DB091A6000A457D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84DB4CD82DB0919F000A457D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84DB4CDF2DB0919F000A457D;
+			remoteInfo = Clique;
+		};
+		84DB4CFC2DB091A6000A457D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84DB4CD82DB0919F000A457D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84DB4CDF2DB0919F000A457D;
+			remoteInfo = Clique;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		84DB4CE02DB0919F000A457D /* Clique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clique.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84DB4CE32DB0919F000A457D /* CliqueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliqueApp.swift; sourceTree = "<group>"; };
+		84DB4CE52DB0919F000A457D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		84DB4CE72DB091A4000A457D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84DB4CE92DB091A4000A457D /* Clique.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clique.entitlements; sourceTree = "<group>"; };
+		84DB4CEB2DB091A4000A457D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		84DB4CF12DB091A6000A457D /* CliqueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CliqueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84DB4CF52DB091A6000A457D /* CliqueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliqueTests.swift; sourceTree = "<group>"; };
+		84DB4CFB2DB091A6000A457D /* CliqueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CliqueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84DB4CFF2DB091A6000A457D /* CliqueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliqueUITests.swift; sourceTree = "<group>"; };
+		84DB4D012DB091A6000A457D /* CliqueUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliqueUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		84DB4D112DB091E5000A457D /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		84DB4D132DB09217000A457D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		84DB4D152DB09227000A457D /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		84DB4D172DB0923C000A457D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		84DB4D192DB0924C000A457D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		84DB4D1B2DB0926F000A457D /* UserPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhoto.swift; sourceTree = "<group>"; };
+		84DB4D1D2DB09363000A457D /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		84DB4D1F2DB09373000A457D /* AuthenticationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationPage.swift; sourceTree = "<group>"; };
+		84DB4D212DB09389000A457D /* GroupsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsPage.swift; sourceTree = "<group>"; };
+		84DB4D232DB09398000A457D /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		84DB4D252DB093AA000A457D /* UploadDump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDump.swift; sourceTree = "<group>"; };
+		84DB4D272DB093BF000A457D /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		84DB4D292DB093D1000A457D /* ProfileAndCalendarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAndCalendarPage.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84DB4CDD2DB0919F000A457D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84DB4CEE2DB091A6000A457D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84DB4CF82DB091A6000A457D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84DB4CD72DB0919F000A457D = {
+			isa = PBXGroup;
+			children = (
+				84DB4CE22DB0919F000A457D /* Clique */,
+				84DB4CF42DB091A6000A457D /* CliqueTests */,
+				84DB4CFE2DB091A6000A457D /* CliqueUITests */,
+				84DB4CE12DB0919F000A457D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84DB4CE12DB0919F000A457D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84DB4CE02DB0919F000A457D /* Clique.app */,
+				84DB4CF12DB091A6000A457D /* CliqueTests.xctest */,
+				84DB4CFB2DB091A6000A457D /* CliqueUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84DB4CE22DB0919F000A457D /* Clique */ = {
+			isa = PBXGroup;
+			children = (
+				84DB4D102DB091CB000A457D /* ViewModel */,
+				84DB4D0F2DB091C3000A457D /* Model */,
+				84DB4D0E2DB091BE000A457D /* View */,
+				84DB4CE32DB0919F000A457D /* CliqueApp.swift */,
+				84DB4CE52DB0919F000A457D /* ContentView.swift */,
+				84DB4CE72DB091A4000A457D /* Assets.xcassets */,
+				84DB4CE92DB091A4000A457D /* Clique.entitlements */,
+				84DB4CEA2DB091A4000A457D /* Preview Content */,
+			);
+			path = Clique;
+			sourceTree = "<group>";
+		};
+		84DB4CEA2DB091A4000A457D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				84DB4CEB2DB091A4000A457D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		84DB4CF42DB091A6000A457D /* CliqueTests */ = {
+			isa = PBXGroup;
+			children = (
+				84DB4CF52DB091A6000A457D /* CliqueTests.swift */,
+			);
+			path = CliqueTests;
+			sourceTree = "<group>";
+		};
+		84DB4CFE2DB091A6000A457D /* CliqueUITests */ = {
+			isa = PBXGroup;
+			children = (
+				84DB4CFF2DB091A6000A457D /* CliqueUITests.swift */,
+				84DB4D012DB091A6000A457D /* CliqueUITestsLaunchTests.swift */,
+			);
+			path = CliqueUITests;
+			sourceTree = "<group>";
+		};
+		84DB4D0E2DB091BE000A457D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84DB4D1D2DB09363000A457D /* PostView.swift */,
+				84DB4D1F2DB09373000A457D /* AuthenticationPage.swift */,
+				84DB4D212DB09389000A457D /* GroupsPage.swift */,
+				84DB4D232DB09398000A457D /* HomePage.swift */,
+				84DB4D252DB093AA000A457D /* UploadDump.swift */,
+				84DB4D272DB093BF000A457D /* GroupView.swift */,
+				84DB4D292DB093D1000A457D /* ProfileAndCalendarPage.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84DB4D0F2DB091C3000A457D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84DB4D172DB0923C000A457D /* User.swift */,
+				84DB4D192DB0924C000A457D /* Post.swift */,
+				84DB4D1B2DB0926F000A457D /* UserPhoto.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84DB4D102DB091CB000A457D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				84DB4D112DB091E5000A457D /* UserViewModel.swift */,
+				84DB4D132DB09217000A457D /* FeedViewModel.swift */,
+				84DB4D152DB09227000A457D /* PostViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84DB4CDF2DB0919F000A457D /* Clique */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84DB4D052DB091A6000A457D /* Build configuration list for PBXNativeTarget "Clique" */;
+			buildPhases = (
+				84DB4CDC2DB0919F000A457D /* Sources */,
+				84DB4CDD2DB0919F000A457D /* Frameworks */,
+				84DB4CDE2DB0919F000A457D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Clique;
+			productName = Clique;
+			productReference = 84DB4CE02DB0919F000A457D /* Clique.app */;
+			productType = "com.apple.product-type.application";
+		};
+		84DB4CF02DB091A6000A457D /* CliqueTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84DB4D082DB091A6000A457D /* Build configuration list for PBXNativeTarget "CliqueTests" */;
+			buildPhases = (
+				84DB4CED2DB091A6000A457D /* Sources */,
+				84DB4CEE2DB091A6000A457D /* Frameworks */,
+				84DB4CEF2DB091A6000A457D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84DB4CF32DB091A6000A457D /* PBXTargetDependency */,
+			);
+			name = CliqueTests;
+			productName = CliqueTests;
+			productReference = 84DB4CF12DB091A6000A457D /* CliqueTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		84DB4CFA2DB091A6000A457D /* CliqueUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84DB4D0B2DB091A6000A457D /* Build configuration list for PBXNativeTarget "CliqueUITests" */;
+			buildPhases = (
+				84DB4CF72DB091A6000A457D /* Sources */,
+				84DB4CF82DB091A6000A457D /* Frameworks */,
+				84DB4CF92DB091A6000A457D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84DB4CFD2DB091A6000A457D /* PBXTargetDependency */,
+			);
+			name = CliqueUITests;
+			productName = CliqueUITests;
+			productReference = 84DB4CFB2DB091A6000A457D /* CliqueUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84DB4CD82DB0919F000A457D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					84DB4CDF2DB0919F000A457D = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					84DB4CF02DB091A6000A457D = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 84DB4CDF2DB0919F000A457D;
+					};
+					84DB4CFA2DB091A6000A457D = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 84DB4CDF2DB0919F000A457D;
+					};
+				};
+			};
+			buildConfigurationList = 84DB4CDB2DB0919F000A457D /* Build configuration list for PBXProject "Clique" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 84DB4CD72DB0919F000A457D;
+			productRefGroup = 84DB4CE12DB0919F000A457D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84DB4CDF2DB0919F000A457D /* Clique */,
+				84DB4CF02DB091A6000A457D /* CliqueTests */,
+				84DB4CFA2DB091A6000A457D /* CliqueUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84DB4CDE2DB0919F000A457D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84DB4CEC2DB091A4000A457D /* Preview Assets.xcassets in Resources */,
+				84DB4CE82DB091A4000A457D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84DB4CEF2DB091A6000A457D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84DB4CF92DB091A6000A457D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84DB4CDC2DB0919F000A457D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84DB4D162DB09227000A457D /* PostViewModel.swift in Sources */,
+				84DB4CE62DB0919F000A457D /* ContentView.swift in Sources */,
+				84DB4D282DB093BF000A457D /* GroupView.swift in Sources */,
+				84DB4D182DB0923C000A457D /* User.swift in Sources */,
+				84DB4D1C2DB0926F000A457D /* UserPhoto.swift in Sources */,
+				84DB4D122DB091E5000A457D /* UserViewModel.swift in Sources */,
+				84DB4D142DB09217000A457D /* FeedViewModel.swift in Sources */,
+				84DB4D202DB09373000A457D /* AuthenticationPage.swift in Sources */,
+				84DB4D242DB09398000A457D /* HomePage.swift in Sources */,
+				84DB4D1A2DB0924C000A457D /* Post.swift in Sources */,
+				84DB4D2A2DB093D1000A457D /* ProfileAndCalendarPage.swift in Sources */,
+				84DB4D1E2DB09363000A457D /* PostView.swift in Sources */,
+				84DB4D222DB09389000A457D /* GroupsPage.swift in Sources */,
+				84DB4D262DB093AA000A457D /* UploadDump.swift in Sources */,
+				84DB4CE42DB0919F000A457D /* CliqueApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84DB4CED2DB091A6000A457D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84DB4CF62DB091A6000A457D /* CliqueTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84DB4CF72DB091A6000A457D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84DB4D002DB091A6000A457D /* CliqueUITests.swift in Sources */,
+				84DB4D022DB091A6000A457D /* CliqueUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84DB4CF32DB091A6000A457D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84DB4CDF2DB0919F000A457D /* Clique */;
+			targetProxy = 84DB4CF22DB091A6000A457D /* PBXContainerItemProxy */;
+		};
+		84DB4CFD2DB091A6000A457D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84DB4CDF2DB0919F000A457D /* Clique */;
+			targetProxy = 84DB4CFC2DB091A6000A457D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		84DB4D032DB091A6000A457D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		84DB4D042DB091A6000A457D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		84DB4D062DB091A6000A457D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Clique/Clique.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Clique/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amrita.Clique;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84DB4D072DB091A6000A457D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Clique/Clique.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Clique/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amrita.Clique;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		84DB4D092DB091A6000A457D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amrita.CliqueTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clique.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Clique";
+			};
+			name = Debug;
+		};
+		84DB4D0A2DB091A6000A457D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amrita.CliqueTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clique.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Clique";
+			};
+			name = Release;
+		};
+		84DB4D0C2DB091A6000A457D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amrita.CliqueUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Clique;
+			};
+			name = Debug;
+		};
+		84DB4D0D2DB091A6000A457D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amrita.CliqueUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Clique;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84DB4CDB2DB0919F000A457D /* Build configuration list for PBXProject "Clique" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84DB4D032DB091A6000A457D /* Debug */,
+				84DB4D042DB091A6000A457D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84DB4D052DB091A6000A457D /* Build configuration list for PBXNativeTarget "Clique" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84DB4D062DB091A6000A457D /* Debug */,
+				84DB4D072DB091A6000A457D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84DB4D082DB091A6000A457D /* Build configuration list for PBXNativeTarget "CliqueTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84DB4D092DB091A6000A457D /* Debug */,
+				84DB4D0A2DB091A6000A457D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84DB4D0B2DB091A6000A457D /* Build configuration list for PBXNativeTarget "CliqueUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84DB4D0C2DB091A6000A457D /* Debug */,
+				84DB4D0D2DB091A6000A457D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84DB4CD82DB0919F000A457D /* Project object */;
+}
