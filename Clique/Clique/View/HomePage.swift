@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct HomePage: View {
+    let numPosts: Int = 5
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            LazyVStack(spacing: 10) {
+                ForEach(1..<5) {_ in
+                    HomePostView()
+                }
+                .padding(20)
+            }
+        }
+        .navigationTitle("Clique")
     }
 }
 

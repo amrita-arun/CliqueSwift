@@ -27,6 +27,11 @@
 		84DB4D262DB093AA000A457D /* UploadDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D252DB093AA000A457D /* UploadDump.swift */; };
 		84DB4D282DB093BF000A457D /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D272DB093BF000A457D /* GroupView.swift */; };
 		84DB4D2A2DB093D1000A457D /* ProfileAndCalendarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D292DB093D1000A457D /* ProfileAndCalendarPage.swift */; };
+		84DB4D2C2DB09440000A457D /* HomePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D2B2DB09440000A457D /* HomePostView.swift */; };
+		84DB4D2E2DB0A045000A457D /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D2D2DB0A044000A457D /* PhotoView.swift */; };
+		84DB4D302DB0A77E000A457D /* PostNavContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D2F2DB0A77E000A457D /* PostNavContainer.swift */; };
+		84DB4D322DB1B01C000A457D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D312DB1B01B000A457D /* MainTabView.swift */; };
+		84DB4D342DB1B259000A457D /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4D332DB1B259000A457D /* Group.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +76,11 @@
 		84DB4D252DB093AA000A457D /* UploadDump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDump.swift; sourceTree = "<group>"; };
 		84DB4D272DB093BF000A457D /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		84DB4D292DB093D1000A457D /* ProfileAndCalendarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAndCalendarPage.swift; sourceTree = "<group>"; };
+		84DB4D2B2DB09440000A457D /* HomePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostView.swift; sourceTree = "<group>"; };
+		84DB4D2D2DB0A044000A457D /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		84DB4D2F2DB0A77E000A457D /* PostNavContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNavContainer.swift; sourceTree = "<group>"; };
+		84DB4D312DB1B01B000A457D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		84DB4D332DB1B259000A457D /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +135,6 @@
 				84DB4D0F2DB091C3000A457D /* Model */,
 				84DB4D0E2DB091BE000A457D /* View */,
 				84DB4CE32DB0919F000A457D /* CliqueApp.swift */,
-				84DB4CE52DB0919F000A457D /* ContentView.swift */,
 				84DB4CE72DB091A4000A457D /* Assets.xcassets */,
 				84DB4CE92DB091A4000A457D /* Clique.entitlements */,
 				84DB4CEA2DB091A4000A457D /* Preview Content */,
@@ -161,6 +170,7 @@
 		84DB4D0E2DB091BE000A457D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84DB4CE52DB0919F000A457D /* ContentView.swift */,
 				84DB4D1D2DB09363000A457D /* PostView.swift */,
 				84DB4D1F2DB09373000A457D /* AuthenticationPage.swift */,
 				84DB4D212DB09389000A457D /* GroupsPage.swift */,
@@ -168,6 +178,10 @@
 				84DB4D252DB093AA000A457D /* UploadDump.swift */,
 				84DB4D272DB093BF000A457D /* GroupView.swift */,
 				84DB4D292DB093D1000A457D /* ProfileAndCalendarPage.swift */,
+				84DB4D2B2DB09440000A457D /* HomePostView.swift */,
+				84DB4D2D2DB0A044000A457D /* PhotoView.swift */,
+				84DB4D2F2DB0A77E000A457D /* PostNavContainer.swift */,
+				84DB4D312DB1B01B000A457D /* MainTabView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +192,7 @@
 				84DB4D172DB0923C000A457D /* User.swift */,
 				84DB4D192DB0924C000A457D /* Post.swift */,
 				84DB4D1B2DB0926F000A457D /* UserPhoto.swift */,
+				84DB4D332DB1B259000A457D /* Group.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -325,16 +340,21 @@
 				84DB4D162DB09227000A457D /* PostViewModel.swift in Sources */,
 				84DB4CE62DB0919F000A457D /* ContentView.swift in Sources */,
 				84DB4D282DB093BF000A457D /* GroupView.swift in Sources */,
+				84DB4D342DB1B259000A457D /* Group.swift in Sources */,
+				84DB4D2E2DB0A045000A457D /* PhotoView.swift in Sources */,
 				84DB4D182DB0923C000A457D /* User.swift in Sources */,
+				84DB4D322DB1B01C000A457D /* MainTabView.swift in Sources */,
 				84DB4D1C2DB0926F000A457D /* UserPhoto.swift in Sources */,
 				84DB4D122DB091E5000A457D /* UserViewModel.swift in Sources */,
 				84DB4D142DB09217000A457D /* FeedViewModel.swift in Sources */,
+				84DB4D2C2DB09440000A457D /* HomePostView.swift in Sources */,
 				84DB4D202DB09373000A457D /* AuthenticationPage.swift in Sources */,
 				84DB4D242DB09398000A457D /* HomePage.swift in Sources */,
 				84DB4D1A2DB0924C000A457D /* Post.swift in Sources */,
 				84DB4D2A2DB093D1000A457D /* ProfileAndCalendarPage.swift in Sources */,
 				84DB4D1E2DB09363000A457D /* PostView.swift in Sources */,
 				84DB4D222DB09389000A457D /* GroupsPage.swift in Sources */,
+				84DB4D302DB0A77E000A457D /* PostNavContainer.swift in Sources */,
 				84DB4D262DB093AA000A457D /* UploadDump.swift in Sources */,
 				84DB4CE42DB0919F000A457D /* CliqueApp.swift in Sources */,
 			);
