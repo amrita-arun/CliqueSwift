@@ -25,7 +25,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
           GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
 
           return true
-    //return true
   }
     func application(
         _ app: UIApplication,
@@ -37,16 +36,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     private func scheduleWeeklyReminder() {
         let center = UNUserNotificationCenter.current()
-        // 1) Request permission
+        // Request permission
         center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             guard granted else { return }
-         // 2) Build the content
+         // Build the content
             let content = UNMutableNotificationContent()
             content.title = "📸 Time to dump your week!"
             content.body  = "Share 5 photos from your past week with your Clique."
             content.sound = .default
             
-            // 3) Schedule for Sunday 9 AM, repeating weekly
+            // Schedule for Sunday 9 AM, repeating weekly
             var comps = DateComponents()
             comps.weekday = 1    // Sunday == 1 in Calendar
             comps.hour    = 9
@@ -59,11 +58,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 trigger: trigger
             )
             center.add(req)
-            }
         }
-        }
+    }
+}
 
-        // Handle foreground notifications
+// Handle foreground notifications
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
@@ -91,14 +90,13 @@ struct CliqueApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var userViewModel = UserViewModel()
     
-   // @available(iOS 17.0, *)
     var body: some Scene {
         WindowGroup {
             if userViewModel.currentUser == nil {
-                // No Firebase user → show Login (email or Google)
+                // No Firebase user means show Login (email or Google)
                LoginView(userViewModel: userViewModel)
-                } else if userViewModel.user == nil {
-                // We have a Firebase user but no Firestore profile yet → setup screen
+            } else if userViewModel.user == nil {
+                // We have a Firebase user but no Firestore profile yet means setup screen
                 ProfileSetupView(userViewModel: userViewModel)
             } else {
                 // User is logged in

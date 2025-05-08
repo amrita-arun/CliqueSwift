@@ -17,6 +17,7 @@ struct HomePage: View {
     }
     
     var body: some View {
+        NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 10) {
                     ForEach(feedViewModel.posts) { post in
@@ -26,7 +27,7 @@ struct HomePage: View {
                             .first(where: { $0.id == post.groupID })?
                             .name
                         ?? "Group"
-        
+                        
                         HomePostView(
                             username:  feedViewModel.usernamesById[post.userID] ?? "Unknown",
                             groupName: groupName,
@@ -35,14 +36,16 @@ struct HomePage: View {
                     }
                     .padding(20)
                 }
+                
             }
-            .navigationTitle("Clique")
             .task {
                 // ensure we have the latest group IDs
                 await userViewModel.fetchGroups()
                 // then fetch posts for those groups
                 await feedViewModel.fetchPosts()
             }
+            .navigationTitle(Text("Clique"))
+        }
     }
 }
 
