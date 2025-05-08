@@ -25,7 +25,14 @@ class UserViewModel: ObservableObject {
     @Published var currentUser : User?
     @Published var user: CliqueUser?
     
-    /// Writes a Firestore document in `/users/{uid}` after Google sign-in,
+    init() {
+        if let user = auth.currentUser {
+            currentUser = user
+            Task { await fetchCurrentUserProfile() }
+        }
+    }
+    
+    // Writes a Firestore document in `/users/{uid}` after Google sign-in
    func createUserProfile(name: String, username: String) async throws {
        guard let uid = currentUser?.uid,
              let email = currentUser?.email
