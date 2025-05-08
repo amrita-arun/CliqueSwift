@@ -6,87 +6,121 @@
 //
 
 import SwiftUI
+import UserNotifications    // ← add this at the top
 
 struct GroupsPage: View {
-    let groups: [Group] = [
-        Group(name: "Family", users: [
-            User(name: "Anita", username: "anirang"),
-            User(name: "Arun", username: "arunsrini"),
-            User(name: "Ananth", username: "anantharun")], uploadNow: true),
-        Group(name: "Besties", users: [
-            User(name: "Shruti", username: "shruti"),
-            User(name: "Aditi", username: "aditi"),
-            User(name: "Namrata", username: "namrata")], uploadNow: false)
-    ]
-        
+    @ObservedObject var userViewModel: UserViewModel
+    @StateObject private var postVM = PostViewModel()
+
+
+    @State private var showAddGroup = false
+    @State private var selectedGroup: Group?
+    @State private var hasUploaded: [String: Bool] = [:]
+
+
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Groups")
-                .font(.title)
-                .bold()
-                .padding(.leading, 15)
-            ForEach(groups) { group in
-                GroupBox(group: group)
+        NavigationStack {
+            VStack {
+                ForEach(userViewModel.groups, id: \.id) { group in
+                    // compute whether they can upload
+                    let uploaded = hasUploaded[group.id] ?? false
+                    GroupBox(
+                        group: group,
+                        canUpload: !uploaded   // disable if already uploaded
+                    ) {
+                        selectedGroup = group
+                    }
+                }
+                Spacer()
             }
-            Spacer()
-            
+            .navigationTitle("Groups")
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button { showAddGroup = true } label: {
+                        Image(systemName: "plus")
+                    }
+                    
+                    Button { scheduleTestNotification() } label: {
+                        Image(systemName: "bell")
+                    }
+                }
+                    
+            }
         }
-        
-        
-    }
+            .sheet(isPresented: $showAddGroup) {
+                AddGroupView(userViewModel: userViewModel)
+            }
+            // present UploadDumpView whenever `selectedGroup` is non‐nil
+            .sheet(item: $selectedGroup) { group in
+                UploadDump(
+                    postViewModel: PostViewModel(),
+                    userViewModel: userViewModel,
+                    currentGroupID: group.id
+                )
+            }
+            .task {
+                await userViewModel.fetchGroups()
+                for group in userViewModel.groups {
+                    do {
+                        let didUpload = try await postVM.hasUploadedThisWeek(groupID: group.id)
+                        hasUploaded[group.id] = didUpload
+                    } catch {
+                        hasUploaded[group.id] = false
+                    }
+                }
+            }
+        }
     
+    private func scheduleTestNotification() {
+        let center = UNUserNotificationCenter.current()
+        // build a quick notification in 5 seconds
+        let content = UNMutableNotificationContent()
+        content.title = "Upload Time!"
+        content.body  = "It's time to upload your photo dump!"
+        content.sound = .default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let req = UNNotificationRequest(
+            identifier: "testDumpReminder",
+            content: content,
+            trigger: trigger
+        )
+        center.add(req)
+    }
 }
+
 
 struct GroupBox: View {
     let group: Group
-    //let uploadNow: Bool
-    
+    let canUpload: Bool
+    let onUpload: () -> Void
+
     var body: some View {
         VStack(alignment: .leading) {
-            ZStack {
-                HStack {
-                    Text("Just now")
-                    Spacer()
-                }
-                
-                Text(group.name)
-                    .font(.title3)
-                    .bold()
-                    .frame(maxWidth: .infinity, alignment: .center)
-            }
-            .padding(10)
-            .frame(maxWidth: .infinity)
-            //.border(Color.black)
-            Spacer()
-            
             HStack {
-                Label("Upload dump", systemImage: "clock")
-                    .font(.body)
-                    .foregroundColor(.white)
-                    .padding(10)
-                    .padding(.trailing, 5)
-                    .background(.purple.opacity(0.75), in: Capsule())
-                
+                Text(group.name).font(.headline)
+                Spacer()
+                Button("Upload Dump") {
+                    onUpload()
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(!canUpload)
+                .opacity(canUpload ? 1 : 0.5)
             }
-            .padding(10)
-            .opacity(group.uploadNow ? 100.0 : 0.0)
-            //.border(Color.black)
+            .padding()
+            Divider()
         }
-        .frame(maxWidth: .infinity, maxHeight: 150)
-        .background(Color.gray)
-        .cornerRadius(10)
-        .padding(.leading, 15)
-        .padding(.trailing, 15)
-        .padding(.bottom, 15)
-        //.border(Color.black)
-        
-        
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(8)
+        .padding(.horizontal)
+        .padding(.vertical, 4)
     }
-    
 }
 
-struct GroupsPage_Previews: PreviewProvider {
-    static var previews: some View {
-        GroupsPage()
-    }
-}
+/*
+ struct GroupsPage_Previews: PreviewProvider {
+ static var previews: some View {
+ GroupsPage()
+ }
+ }
+ */

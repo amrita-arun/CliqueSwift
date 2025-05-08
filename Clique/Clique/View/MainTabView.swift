@@ -6,30 +6,47 @@
 //
 
 import SwiftUI
+import Combine
 
 struct MainTabView: View {
+    @ObservedObject var userViewModel: UserViewModel
+    @State private var selectedTab: Int = 0
+
+    
     var body: some View {
-        TabView {
-            HomePage()
+        TabView(selection: $selectedTab) {
+            HomePage(userViewModel: userViewModel)
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            GroupsPage()
+                .tag(0)
+            GroupsPage(userViewModel: userViewModel)
                 .tabItem {
                     Label("Cliques", systemImage: "person.3")
                 }
-            ProfileAndCalendarPage()
+                .tag(1)
+            ProfileAndCalendarPage(userViewModel: userViewModel)
                 .tabItem {
                     Label("Profile",
                     systemImage: "person")
                 }
+                .tag(2)
+            
+            //.environmentObject(userViewModel)
             
         }
+        .onReceive(
+            NotificationCenter.default.publisher(for: .didTapDumpNotification)
+            ) { _ in
+                selectedTab = 1
+            }
     }
 }
 
-struct MainTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabView()
-    }
-}
+/*
+ struct MainTabView_Previews: PreviewProvider {
+ static var previews: some View {
+ MainTabView()
+ }
+ }
+ */

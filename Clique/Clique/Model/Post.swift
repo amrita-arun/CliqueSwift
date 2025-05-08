@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct Post: Identifiable {
+    let id: String
+    let userID: String
+    let groupID: String        
+
+    let imageURLs: [String]
+    let captions: [String]
+    let timestamp: Date
+    
+}

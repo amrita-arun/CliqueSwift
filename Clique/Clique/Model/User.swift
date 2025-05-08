@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct User: Identifiable {
-    let id = UUID()
+struct CliqueUser  {
+    let id: String
     let name: String
     let username: String
 }

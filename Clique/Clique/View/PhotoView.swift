@@ -28,6 +28,16 @@ struct Caption: View {
     let imgcaption: String
     
     var body: some View {
+        Text("\(imgcaption)")
+            .font(.body)
+            .foregroundColor(.white)
+            .padding(10)
+            .padding(.trailing, 5)
+            .background(Color.black)
+            .opacity(0.75)
+            .cornerRadius(5)
+            .padding(.leading, 5)
+        /*
         VStack {
             Text(imgcaption)
                 .font(.caption)
@@ -38,6 +48,7 @@ struct Caption: View {
                 .opacity(0.8)
                 .cornerRadius(5.0)
                 .padding(.leading, 5)
+         */
         
     }
 }

@@ -8,10 +8,12 @@
 import Foundation
 
 struct Group: Identifiable {
-    let id = UUID()
+    let uuid = UUID()
+    let id: String
     let name: String
-    let users: [User]
+    let userIds: [String]
     let uploadNow: Bool
+    let created: Date
     //var lastUploaded: String
     
 }
