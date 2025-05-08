@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-//@available(iOS 17.0, *)
 struct SignupView: View {
     @ObservedObject var userViewModel: UserViewModel
     @State private var didSignUp = false
@@ -48,53 +47,6 @@ struct SignupView: View {
                         didSignUp = true
                     }
                 }
-                    
-                /*
-                NavigationLink {
-                    MainTabView()
-                        //.navigationBarBackButtonHidden(true)
-                } label: {
-                    Text("Sign Up")
-                        .font(.headline)
-                        .frame(width: 90, height: 35)
-                        .background(Color.gray)
-                        .cornerRadius(5)
-                        .padding()
-                }
-                 */
-                
-                /*
-                Button("Sign Up") {
-                    Task {
-                        do {
-                            try await userViewModel.signUp(with: email, password: password)
-                            // once currentUser is non‐nil, consider sign up successful
-                            if userViewModel.currentUser != nil {
-                                didSignUp = true
-                            }
-                        } catch {
-                            // surface any error to the user
-                            errorMessage = error.localizedDescription
-                        }
-                    }
-                }
-                .font(.headline)
-                .frame(width: 120, height: 44)
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(8)
-                 */
-
-                // hidden link — only activates when didSignUp becomes true
-                //NavigationLink("", destination: MainTabView(), isActive: $didSignUp)
-                // Hidden NavigationLink bound to didSignUp
-                /*
-                NavigationLink(
-                    destination: MainTabView(),
-                    isActive: $didSignUp,
-                    label: { EmptyView() }
-                )
-                 */
-
                 
                 NavigationLink("Have an account? Log in") {
                     LoginView(userViewModel: userViewModel)
@@ -102,25 +54,10 @@ struct SignupView: View {
                 .navigationBarBackButtonHidden(true)
                 
             }
-            /*
-            .navigationDestination(isPresented: $didSignUp) {
-                MainTabView(userViewModel: userViewModel)
-            }
-            .navigationBarBackButtonHidden(true)
-             */
+            
             .padding()
         }
         
         
     }
 }
-
-/*
- #Preview {
- if #available(iOS 17.0, *) {
- SignupView()
- } else {
- // Fallback on earlier versions
- }
- }
- */

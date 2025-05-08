@@ -31,9 +31,6 @@ struct MainTabView: View {
                     systemImage: "person")
                 }
                 .tag(2)
-            
-            //.environmentObject(userViewModel)
-            
         }
         .onReceive(
             NotificationCenter.default.publisher(for: .didTapDumpNotification)
@@ -42,11 +39,3 @@ struct MainTabView: View {
             }
     }
 }
-
-/*
- struct MainTabView_Previews: PreviewProvider {
- static var previews: some View {
- MainTabView()
- }
- }
- */

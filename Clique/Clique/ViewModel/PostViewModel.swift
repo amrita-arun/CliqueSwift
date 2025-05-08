@@ -14,54 +14,12 @@ import FirebaseFirestore
 
 
 class PostViewModel: ObservableObject {
-    private let storageRef = Storage.storage().reference()   // ← root reference
+    private let storageRef = Storage.storage().reference()
     private let db = Firestore.firestore()
 
-    @Published var caption1: String = ""
-    @Published var caption2: String = ""
-    @Published var caption3: String = ""
-    @Published var caption4: String = ""
-    @Published var caption5: String = ""
-    
     @Published var images: [UIImage] = []
     @Published var captions: [String] = []
-    
-   // init() {
-        //self.captions = ["", "", "", "", ""]
-   // }
-    
-    func addCaption(capNum: Int, caption: String) -> Bool {
-        if (capNum == 1) {
-            caption1 = caption
-        } else if (capNum == 2) {
-            caption2 = caption
-        } else if (capNum == 3) {
-            caption3 = caption
-        } else if (capNum == 4) {
-            caption4 = caption
-        } else if (capNum == 5) {
-            caption5 = caption
-        } else {
-            return false
-        }
-        return true
-    }
-    
-    func uploadPost() async -> Bool {
-        //let storageRef = storage.reference()
-        //let imagesRef = storageRef.child("users")
-        
 
-        return true
-    }
-    
-    /*
-    func addPhotos(images: [Image]) -> Bool {
-        self.images.append(contentsOf: images)
-        return true
-    }
-     */
-    
     func uploadDump(groupID: String, imgs: [UIImage], captions: [String]) async throws {
         images = imgs
         self.captions = captions
@@ -73,7 +31,7 @@ class PostViewModel: ObservableObject {
             throw NSError(domain:"PostVM", code:2, userInfo:[NSLocalizedDescriptionKey:"No images to upload"])
         }
 
-        // 1) generate dumpID and base storage ref
+        // generate dumpID and base storage ref
         let dumpID  = UUID().uuidString
         let baseRef = storageRef
                     .child("user_dumps")
@@ -81,7 +39,7 @@ class PostViewModel: ObservableObject {
                     .child(groupID)
                     .child(dumpID)
 
-        // 2) upload each image in turn
+        // upload each image in turn
         var downloadURLs = [String]()
         for (i, uiImage) in images.enumerated() {
             guard let data = uiImage.jpegData(compressionQuality: 0.8) else {
@@ -97,7 +55,7 @@ class PostViewModel: ObservableObject {
             downloadURLs.append(url.absoluteString)
         }
 
-        // 3) Optionally write metadata to Firestore
+        // write metadata to Firestore
         let dumpData: [String:Any] = [
             "userID":    uid,
             "groupID":   groupID,
@@ -112,12 +70,11 @@ class PostViewModel: ObservableObject {
             .setData(dumpData)
     }
     
-    /// Returns true if the current user has already uploaded a dump
-      /// in `groupID` since last Sunday at 9 AM.
+    // Returns true if the current user has already uploaded a dump this week
     func hasUploadedThisWeek(groupID: String) async throws -> Bool {
         guard let uid = Auth.auth().currentUser?.uid else { return false }
     
-        // 1) calculate the most recent Sunday 9 AM
+        // calculate the most recent Sunday 9 AM
         let calendar = Calendar.current
         let now = Date()
         var comps = DateComponents()
@@ -130,9 +87,9 @@ class PostViewModel: ObservableObject {
           matching: comps,
           matchingPolicy: .nextTimePreservingSmallerComponents,
           direction: .backward
-       ) ?? now
+       ) ?? now // from StackOverflow
     
-        // 2) query for any dump in that window
+        // query for any dump in that window. look in dumps collection for documents where userID matches the current user, group ID matches the group in question, and timestamp >= start (aka uploaded since that Sunday). all we need to know is that at least 1 exists, so we limit to 1
         let snap = try await db
           .collection("dumps")
           .whereField("userID",  isEqualTo: uid)
@@ -141,10 +98,11 @@ class PostViewModel: ObservableObject {
           .limit(to: 1)
           .getDocuments()
     
-        return !snap.documents.isEmpty
+        return !snap.documents.isEmpty // return true if a document has been found
       }
 }
     
+// From StackOverflow
 extension StorageReference {
     func putDataAsync(_ data: Data, metadata: StorageMetadata?) async throws -> StorageMetadata {
         try await withCheckedThrowingContinuation { cont in

@@ -15,7 +15,7 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var didSignIn = false
     @State private var errorMessage: String?
-    @State private var showProfileSetup = false  // Google login flow
+    @State private var showProfileSetup = false  // for Google login flow
 
     
     var body: some View {
@@ -44,7 +44,6 @@ struct LoginView: View {
                     }
                 }
                 
-                    // Google Sign-In button
                 // Google Sign-In via a UIKit button wrapper
                 GoogleSignInButtonView()
                     .frame(height: 50)
@@ -61,39 +60,20 @@ struct LoginView: View {
                         }
                     }
                 
-                /*
-                NavigationLink {
-                    do {
-                        //Task {
-                            await userViewModel.signIn(with: email, password: password)
-                        //}
-                    }
-                    MainTabView()
-                        //.navigationBarBackButtonHidden(true)
-                } label: {
-                    Text("Log In")
-                        .font(.headline)
-                        .frame(width: 90, height: 35)
-                        .background(Color.gray)
-                        .cornerRadius(5)
-                        .padding()
-                    
-                }
-                 */
                 if let errorMessage {
-                                    Text(errorMessage)
-                                        .foregroundColor(.red)
-                                        .font(.caption)
-                                }
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                        .font(.caption)
+                }
                                 
                 // Navigate to main app on success
-                // 1) Email/password → MainTabView
+                // 1) Email/password goes to MainTabView
                 NavigationLink(
                     "",
                     destination: MainTabView(userViewModel: userViewModel),
                     isActive: $didSignIn
                 )
-                // 2) Google login → ProfileSetupView
+                // 2) Google login goes to ProfileSetupView to input username and name
                 NavigationLink(
                     "",
                     destination: ProfileSetupView(userViewModel: userViewModel),
@@ -101,23 +81,13 @@ struct LoginView: View {
                 )
                 
                 NavigationLink("Don't have an account? Sign up") {
-                    //if #available(iOS 17.0, *) {
-                        SignupView(userViewModel: userViewModel)
-                    //} else {
-                        // Fallback on earlier versions
-                    //}
+                    SignupView(userViewModel: userViewModel)
                 }
                 .navigationBarBackButtonHidden(true)
                 
             }
             .padding()
         }
-        /*
-        .navigationDestination(isPresented: $didSignIn) {
-            MainTabView(userViewModel: userViewModel)
-        }
-        .navigationBarBackButtonHidden(true)
-         */
     }
 }
 
@@ -127,8 +97,3 @@ struct GoogleSignInButtonView: UIViewRepresentable {
     }
     func updateUIView(_ uiView: GIDSignInButton, context: Context) {}
 }
-/*
- #Preview {
- LoginView()
- }
- */

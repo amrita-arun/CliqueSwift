@@ -13,22 +13,19 @@ import GoogleSignInSwift
 import FirebaseCore
 import GoogleSignIn
 
-//@available(iOS 17.0, *)
-//@Observable
+
 @MainActor
 class UserViewModel: ObservableObject {
     
     private let auth = Auth.auth()
     private let db   = Firestore.firestore()
-    
     var groupIds: [String] = []
-    @Published var groups: [Group] = []
     
+    @Published var groups: [Group] = []
     @Published var currentUser : User?
     @Published var user: CliqueUser?
     
     /// Writes a Firestore document in `/users/{uid}` after Google sign-in,
-       /// initializing name, username, email, and an empty groupIds array.
    func createUserProfile(name: String, username: String) async throws {
        guard let uid = currentUser?.uid,
              let email = currentUser?.email
@@ -49,7 +46,8 @@ class UserViewModel: ObservableObject {
        try await db.collection("users")
                    .document(uid)
                    .setData(data)
-       // Update local cache
+       
+       // Update local user
        self.user = CliqueUser(id: uid, name: name, username: username)
    }
     
@@ -63,7 +61,7 @@ class UserViewModel: ObservableObject {
             currentUser = result.user
             let uid = result.user.uid
 
-            // 2. Prepare Firestore data
+            // Prepare Firestore data
             let userData: [String: Any] = [
                 "email":    email,
                 "name":     name,
@@ -71,18 +69,18 @@ class UserViewModel: ObservableObject {
                 "groupIds": groupIds
             ]
 
-            // 3. Write to Firestore under "users/{uid}"
+            // Write to Firestore under "users/{uid}"
             try await db
                 .collection("users")
                 .document(uid)
                 .setData(userData)
             
-            print("✅ User document created for \(uid)")
+            print("User document created for \(uid)")
 
         } catch {
             print(error)
             
-            print("❌ Error signing up or writing user data: \(error)")
+            print("Error signing up or writing user data: \(error)")
 
         }
         
@@ -96,8 +94,6 @@ class UserViewModel: ObservableObject {
             )
             currentUser = result.user
             await fetchCurrentUserProfile()
-
-            print(currentUser)
             return true
         } catch {
             print(error)
@@ -116,10 +112,10 @@ class UserViewModel: ObservableObject {
     }
     
     func fetchUser(byEmail email: String) async throws -> CliqueUser? {
-            let snap = try await db
-                .collection("users")
-                .whereField("email", isEqualTo: email)
-                .getDocuments()
+        let snap = try await db
+            .collection("users")
+            .whereField("email", isEqualTo: email)
+            .getDocuments()
         guard let doc = snap.documents.first else { return nil }
         let data = doc.data()
         let name     = data["name"] as? String     ?? ""
@@ -128,7 +124,7 @@ class UserViewModel: ObservableObject {
     }
 
     func createGroup(name: String, memberUIDs: [String]) async throws {
-        // 1. Make a new group document
+        // Make a new group document
         let groupRef = db.collection("groups").document()
         let groupID  = groupRef.documentID
         let groupData: [String:Any] = [
@@ -138,7 +134,7 @@ class UserViewModel: ObservableObject {
         ]
         try await groupRef.setData(groupData)
 
-        // 2. Add this groupID to each user's `groupIds` field
+        // Add this groupID to each user's `groupIds` field
         for uid in memberUIDs {
             let userRef = db.collection("users").document(uid)
             try await userRef.updateData([
@@ -146,7 +142,6 @@ class UserViewModel: ObservableObject {
             ])
         }
 
-        // 3. Keep local state in sync
         groupIds.append(groupID)
     }
     
@@ -154,7 +149,7 @@ class UserViewModel: ObservableObject {
         guard let uid = currentUser?.uid else { return }
         
         do {
-            // 1. Load the user's document to get their groupIds
+            // Load the user's document to get their groupIds
             let userDoc = try await db
                 .collection("users")
                 .document(uid)
@@ -168,13 +163,13 @@ class UserViewModel: ObservableObject {
                 return
             }
             
-            // 2. Query the `groups` collection by document ID
+            // Query the 'groups' collection by document ID
             let snap = try await db
                 .collection("groups")
                 .whereField(FieldPath.documentID(), in: ids)
                 .getDocuments()
             
-            // 3. Map documents into `Group` models
+            // Map documents into 'Group' models
             self.groups = snap.documents.map { doc in
                 let d = doc.data()
                 let name    = d["name"] as? String     ?? ""
@@ -205,52 +200,50 @@ class UserViewModel: ObservableObject {
             let username = data["username"] as? String ?? ""
             DispatchQueue.main.async {
                 self.user = CliqueUser(id: uid, name: name, username: username)
-            }
+            } // updates user on main thread (DispatchQueue handles UI work, and does not run on the background thread like Firestore work. async so it's scheduled if main thread is currently busy. then the UI on CalendarAndProfileView refreshes so that the user's username is displayed there (from StackOverflow)
         } catch {
-            print("⚠️ fetchCurrentUserProfile failed:", error)
+            print("fetchCurrentUserProfile failed:", error)
         }
     }
     
-    /// Sign in with Google and authenticate to Firebase
+    // Sign in with Google and authenticate to Firebase
     func signInWithGoogle() async throws {
-        // 1) Get Firebase client ID
-        // 1) Get Firebase clientID and set up Google configuration
+        
+        // Get Firebase clientID from GoogleService-Info.plist and set up Google configuration
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             throw NSError(domain: "UserVM", code: 0,
                           userInfo: [NSLocalizedDescriptionKey: "Missing clientID"])
             }
             GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
         
-                // 2) Find a UIViewController to present from (the root VC of the key window)
+            // Find a UIViewController to present from (the root VC of the key window). The Google Sign In provider requires a UIViewController to display the Google sign in sheet
             guard let scene = UIApplication.shared.connectedScenes
                         .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-                  let rootVC = scene.windows.first(where: \.isKeyWindow)?.rootViewController
+                  let rootVC = scene.windows.first(where: \.isKeyWindow)?.rootViewController // from StackOverflow + ChatGPT
             else {
                 throw NSError(domain: "UserVM", code: 1,
-                                 userInfo: [NSLocalizedDescriptionKey: "No active view controller"])
+                              userInfo: [NSLocalizedDescriptionKey: "No active view controller"])
         }
         
-                // Extract tokens from the authentication object
-        // 3) Perform the async sign-in, passing the presenter
+                
+        // Perform the async sign-in, when the user finished, we are returned the GIDGoogleUser with ID and access tokens
         let userAuth = try await GIDSignIn.sharedInstance.signIn(withPresenting: rootVC)
         
-        // 4) Extract token strings
-        // idToken is optional GIDToken? → extract its tokenString
+        // Extract ID token and access tokens to pass to Firebase
         guard let idTokenString = userAuth.user.idToken?.tokenString else {
             throw NSError(domain: "UserVM", code: 2,
         userInfo: [NSLocalizedDescriptionKey: "Google ID token missing"])
         }
-        // accessToken is a non-optional GIDToken → get its tokenString
         let accessTokenString = userAuth.user.accessToken.tokenString
         
-        // 5) Exchange for Firebase credential & sign in
+        // Exchange for Firebase credential & sign in
         let credential = GoogleAuthProvider.credential(
             withIDToken: idTokenString,
             accessToken: accessTokenString
         )
         let result = try await auth.signIn(with: credential)
         currentUser = result.user
-        // 5) Load Firestore profile
+        // Load Firestore profile
         await fetchCurrentUserProfile()
     }
 }

@@ -13,14 +13,14 @@ struct HomePage: View {
 
     init(userViewModel: UserViewModel) {
         self.userViewModel = userViewModel
-        _feedViewModel = StateObject(wrappedValue: FeedViewModel(userVM: userViewModel))
+        _feedViewModel = StateObject(wrappedValue: FeedViewModel(userViewModel: userViewModel))
     }
     
     var body: some View {
             ScrollView {
                 LazyVStack(spacing: 10) {
                     ForEach(feedViewModel.posts) { post in
-                        // look up the group's name from your already‐fetched groups
+                        // look up the group's name from already‐fetched groups
                         let groupName = userViewModel
                             .groups
                             .first(where: { $0.id == post.groupID })?
@@ -29,7 +29,7 @@ struct HomePage: View {
         
                         HomePostView(
                             username:  feedViewModel.usernamesById[post.userID] ?? "Unknown",
-                            groupName: groupName,                    // ← new
+                            groupName: groupName,
                             post:      post
                         )
                     }
@@ -46,10 +46,3 @@ struct HomePage: View {
     }
 }
 
-/*
- struct HomePage_Previews: PreviewProvider {
- static var previews: some View {
- HomePage()
- }
- }
- */

@@ -17,10 +17,10 @@ struct ProfileSetupView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Your Name") {
+                Section("Name") {
                     TextField("Full Name", text: $name)
                 }
-                Section("Desired Username") {
+                Section("Username") {
                     TextField("Username", text: $username)
                 }
                 if let error = errorMessage {

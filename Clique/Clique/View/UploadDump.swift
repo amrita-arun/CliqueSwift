@@ -26,7 +26,6 @@ struct UploadDump: View {
         }
     }
 
-    // MARK: – Split out the scrolling/photo list
     private var contentView: some View {
         ScrollView {
             LazyVStack {
@@ -48,7 +47,6 @@ struct UploadDump: View {
         }
     }
 
-    // MARK: – Split out the Next button into its own ToolbarItem
     private var nextButton: some ToolbarContent {
         ToolbarItem(placement: .confirmationAction) {
             Button("Next") {
@@ -59,7 +57,6 @@ struct UploadDump: View {
                             imgs: selectedImages,
                             captions: captions
                         )
-                        // …handle success (dismiss or navigate)…
                     } catch {
                         print("Upload failed:", error)
                     }
@@ -70,7 +67,6 @@ struct UploadDump: View {
         }
     }
 
-    // MARK: – Move your onChange handler into a named function
     private func loadImages(_ items: [PhotosPickerItem]) {
         selectedImages.removeAll()
         Task {
@@ -87,10 +83,4 @@ struct UploadDump: View {
 }
 
 
-/*
- struct UploadDump_Previews: PreviewProvider {
- static var previews: some View {
- UploadDump()
- }
- }
- */
+

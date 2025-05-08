@@ -11,7 +11,6 @@ struct UploadPhotoView: View {
     @ObservedObject var postViewModel: PostViewModel
     var img: Image
     @Binding var caption: String
-    //var captionNum: Int
     
     var body: some View {
         img
@@ -24,8 +23,3 @@ struct UploadPhotoView: View {
     }
 }
 
-/*
- #Preview {
- UploadPhotoView()
- }
- */

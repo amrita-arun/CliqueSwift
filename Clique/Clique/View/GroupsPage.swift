@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import UserNotifications    // ← add this at the top
+import UserNotifications
 
 struct GroupsPage: View {
     @ObservedObject var userViewModel: UserViewModel
@@ -22,7 +22,7 @@ struct GroupsPage: View {
         NavigationStack {
             VStack {
                 ForEach(userViewModel.groups, id: \.id) { group in
-                    // compute whether they can upload
+                    // decide whether they can upload
                     let uploaded = hasUploaded[group.id] ?? false
                     GroupBox(
                         group: group,
@@ -50,7 +50,7 @@ struct GroupsPage: View {
             .sheet(isPresented: $showAddGroup) {
                 AddGroupView(userViewModel: userViewModel)
             }
-            // present UploadDumpView whenever `selectedGroup` is non‐nil
+            // present UploadDumpView whenever 'selectedGroup' is non‐nil
             .sheet(item: $selectedGroup) { group in
                 UploadDump(
                     postViewModel: PostViewModel(),
@@ -73,7 +73,7 @@ struct GroupsPage: View {
     
     private func scheduleTestNotification() {
         let center = UNUserNotificationCenter.current()
-        // build a quick notification in 5 seconds
+        // build a quick notification
         let content = UNMutableNotificationContent()
         content.title = "Upload Time!"
         content.body  = "It's time to upload your photo dump!"
@@ -117,10 +117,3 @@ struct GroupBox: View {
     }
 }
 
-/*
- struct GroupsPage_Previews: PreviewProvider {
- static var previews: some View {
- GroupsPage()
- }
- }
- */
